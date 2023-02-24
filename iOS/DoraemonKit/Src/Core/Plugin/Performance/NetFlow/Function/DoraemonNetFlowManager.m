@@ -133,6 +133,7 @@
     if ([request.HTTPMethod isEqualToString:@"POST"]) {
         NSInputStream *stream = request.HTTPBodyStream;
         DoraemonInputStreamDelegate *delegate = [[DoraemonInputStreamDelegate alloc] initWithCallback:complete inputStream:stream];
+        NSLog(@"%p", delegate);
         [stream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
         [stream open];
     } else {

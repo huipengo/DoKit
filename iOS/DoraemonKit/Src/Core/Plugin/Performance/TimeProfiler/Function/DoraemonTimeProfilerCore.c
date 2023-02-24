@@ -119,7 +119,7 @@ void before_objc_msgSend(id self, SEL _cmd, uintptr_t lr) {
     push_call_record(self, object_getClass(self), _cmd, lr);
 }
 
-uintptr_t after_objc_msgSend() {
+uintptr_t after_objc_msgSend(void) {
     return pop_call_record();
 }
 

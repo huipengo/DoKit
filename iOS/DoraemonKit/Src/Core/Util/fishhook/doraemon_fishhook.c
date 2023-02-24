@@ -66,27 +66,27 @@ static int doraemon_prepend_rebindings(struct doraemon_rebindings_entry **rebind
   return 0;
 }
 
-static vm_prot_t doraemon_get_protection(void *sectionStart) {
-  mach_port_t task = mach_task_self();
-  vm_size_t size = 0;
-  vm_address_t address = (vm_address_t)sectionStart;
-  memory_object_name_t object;
-#if __LP64__
-  mach_msg_type_number_t count = VM_REGION_BASIC_INFO_COUNT_64;
-  vm_region_basic_info_data_64_t info;
-  kern_return_t info_ret = vm_region_64(
-      task, &address, &size, VM_REGION_BASIC_INFO_64, (vm_region_info_64_t)&info, &count, &object);
-#else
-  mach_msg_type_number_t count = VM_REGION_BASIC_INFO_COUNT;
-  vm_region_basic_info_data_t info;
-  kern_return_t info_ret = vm_region(task, &address, &size, VM_REGION_BASIC_INFO, (vm_region_info_t)&info, &count, &object);
-#endif
-  if (info_ret == KERN_SUCCESS) {
-    return info.protection;
-  } else {
-    return VM_PROT_READ;
-  }
-}
+//static vm_prot_t doraemon_get_protection(void *sectionStart) {
+//  mach_port_t task = mach_task_self();
+//  vm_size_t size = 0;
+//  vm_address_t address = (vm_address_t)sectionStart;
+//  memory_object_name_t object;
+//#if __LP64__
+//  mach_msg_type_number_t count = VM_REGION_BASIC_INFO_COUNT_64;
+//  vm_region_basic_info_data_64_t info;
+//  kern_return_t info_ret = vm_region_64(
+//      task, &address, &size, VM_REGION_BASIC_INFO_64, (vm_region_info_64_t)&info, &count, &object);
+//#else
+//  mach_msg_type_number_t count = VM_REGION_BASIC_INFO_COUNT;
+//  vm_region_basic_info_data_t info;
+//  kern_return_t info_ret = vm_region(task, &address, &size, VM_REGION_BASIC_INFO, (vm_region_info_t)&info, &count, &object);
+//#endif
+//  if (info_ret == KERN_SUCCESS) {
+//    return info.protection;
+//  } else {
+//    return VM_PROT_READ;
+//  }
+//}
 
 static void doraemon_perform_rebinding_with_section(struct doraemon_rebindings_entry *rebindings,
                                            section_t *section,

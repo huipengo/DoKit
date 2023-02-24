@@ -33,10 +33,10 @@
 }
 
 - (void)rightNavTitleClick:(id)clickView{
-    [self export:_contentLabel.text];
+    [self doraemon_export:_contentLabel.text];
 }
 
-- (void)export:(NSString *)text {
+- (void)doraemon_export:(NSString *)text {
     [DoraemonUtil shareText:text formVC:self];
 }
 

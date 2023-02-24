@@ -16,7 +16,7 @@
 
 #import <objc/runtime.h>
 #import "NSURLSessionConfiguration+DoKit.h"
-#import <DoraemonKit/DKMultiControlProtocol.h>
+//#import <DoraemonKits/DKMultiControlProtocol.h>
 
 @implementation NSURLSessionConfiguration (DoKit)
 
@@ -42,7 +42,7 @@
     if (!protocolClass) {
         protocolClass = NSMutableArray.array;
     }
-    [protocolClass insertObject:DKMultiControlProtocol.class atIndex:0];
+    //[protocolClass insertObject:DKMultiControlProtocol.class atIndex:0];
     defaultSessionConfiguration.protocolClasses = protocolClass;
     
     return defaultSessionConfiguration;

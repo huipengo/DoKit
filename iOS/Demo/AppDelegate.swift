@@ -15,7 +15,7 @@
  */
 
 import UIKit
-import DoraemonKit
+import DoraemonKits
 
 @main
 private class AppDelegate: UIResponder, UIApplicationDelegate {

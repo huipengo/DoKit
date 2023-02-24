@@ -38,10 +38,17 @@
 
 - (void)doraemonMetricsRecursiveEnable:(BOOL)enable
 {
-    // 状态栏不显示元素边框
-    UIWindow *statusBarWindow = [[UIApplication sharedApplication] valueForKey:@"_statusBarWindow"];
-    if (statusBarWindow && [self isDescendantOfView:statusBarWindow]) {
-        return;
+    /// 状态栏不显示元素边框
+    if (@available(iOS 16, *)) {
+        UIView *statusBarView =  [[UIApplication sharedApplication] valueForKey:@"_statusBar"];
+        if (statusBarView && [self isDescendantOfView:statusBarView.window]) {
+            return;
+        }
+    } else {
+        UIWindow *statusBarWindow = [[UIApplication sharedApplication] valueForKey:@"_statusBarWindow"];
+        if (statusBarWindow && [self isDescendantOfView:statusBarWindow]) {
+            return;
+        }
     }
 
     for (UIView *subView in self.subviews) {

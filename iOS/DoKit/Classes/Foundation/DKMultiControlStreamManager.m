@@ -15,13 +15,13 @@
  */
 
 #import "DKMultiControlStreamManager.h"
-#import <DoraemonKit/DKActionDTOModel.h>
-#import <DoraemonKit/DKCommonDTOModel.h>
-#import <DoraemonKit/DKWebSocketSession.h>
-#import <DoraemonKit/DKDataRequestDTOModel.h>
-#import <DoraemonKit/DKDataResponseDTOModel.h>
-#import <DoraemonKit/DKMultiControlProtocol.h>
-#import <DoraemonKit/DoraemonMCCommandExcutor.h>
+#import <DoraemonKits/DKActionDTOModel.h>
+#import <DoraemonKits/DKCommonDTOModel.h>
+#import <DoraemonKits/DKWebSocketSession.h>
+#import <DoraemonKits/DKDataRequestDTOModel.h>
+#import <DoraemonKits/DKDataResponseDTOModel.h>
+#import <DoraemonKits/DKMultiControlProtocol.h>
+//#import <DoraemonKits/DoraemonMCCommandExcutor.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -97,7 +97,7 @@ NSString *generateId(void) {
                     DKActionDTOModel *actionDTOModel = [MTLJSONAdapter modelOfClass:DKActionDTOModel.class fromJSONDictionary:jsonDictionary error:&error];
                     self.behaviorId = actionDTOModel.behaviorId;
                     if (actionDTOModel.payload) {
-                        [DoraemonMCCommandExcutor excuteMessageStrFromNet:actionDTOModel.payload];
+                        //[DoraemonMCCommandExcutor excuteMessageStrFromNet:actionDTOModel.payload];
                     }
                 }
             }

@@ -18,6 +18,7 @@
     //每一个模块
     
     //数据Mock
+    "FLEX"                                   = "FLEX";
     "Mock数据"                                = "Mock Data";
     "上传模版"                                 = "Upload Data";
     "接口分组"                                 = "Group";

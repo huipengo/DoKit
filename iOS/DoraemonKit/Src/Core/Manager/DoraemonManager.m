@@ -216,11 +216,25 @@ typedef void (^DoraemonPerformanceBlock)(NSDictionary *);
 /**
  初始化内置工具数据
  */
-- (void)initData{
+- (void)initData {
+    
+    #pragma mark - 视觉工具
+    #if __has_include(<FLEX/FLEX.h>)
+    [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonFLEXPlugin];
+    #else
+    #endif
+    
+    [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonColorPickPlugin];
+    [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonViewCheckPlugin];
+    [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonViewAlignPlugin];
+    [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonViewMetricsPlugin];
+    [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonHierarchyPlugin];
+
+    
     #pragma mark - 平台工具
-    [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonMockPlugin];
-    [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonHealthPlugin];
-    [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonFileSyncPlugin];
+    // [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonMockPlugin];
+    // [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonHealthPlugin];
+    // [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonFileSyncPlugin];
     
     #pragma mark - 常用工具
     [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonAppSettingPlugin];
@@ -263,14 +277,7 @@ typedef void (^DoraemonPerformanceBlock)(NSDictionary *);
 #if DoraemonWithMLeaksFinder
     [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonMemoryLeakPlugin];
 #endif
-    
-    #pragma mark - 视觉工具
-    [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonColorPickPlugin];
-    [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonViewCheckPlugin];
-    [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonViewAlignPlugin];
-    [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonViewMetricsPlugin];
-    [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonHierarchyPlugin];
-    
+        
     #pragma mark - Weex专项工具
     #if DoraemonWithWeex
         [self addPluginWithPluginType:DoraemonManagerPluginType_DoraemonWeexLogPlugin];
@@ -694,7 +701,15 @@ typedef void (^DoraemonPerformanceBlock)(NSDictionary *);
                                      @{kAtModule:DoraemonLocalizedString(@"性能检测")},
                                      @{kBuriedPoint:@"dokit_sdk_comm_ck_weaknetwork"}
                              ],
-                           // 视觉工具
+                           // MARK: 视觉工具
+                           @(DoraemonManagerPluginType_DoraemonFLEXPlugin) : @[
+                                @{kTitle:DoraemonLocalizedString(@"FLEX")},
+                                   @{kDesc:DoraemonLocalizedString(@"FLEX")},
+                                   @{kIcon:@"doraemon_view_level"},
+                                   @{kPluginName:@"DoraemonFLEXPlugin"},
+                                   @{kAtModule:DoraemonLocalizedString(@"视觉工具")},
+                                   @{kBuriedPoint:@"dokit_sdk_ui_ck_color_pick"}
+                                   ],
                            @(DoraemonManagerPluginType_DoraemonColorPickPlugin) : @[
                                    @{kTitle:DoraemonLocalizedString(@"取色器")},
                                    @{kDesc:DoraemonLocalizedString(@"取色器")},

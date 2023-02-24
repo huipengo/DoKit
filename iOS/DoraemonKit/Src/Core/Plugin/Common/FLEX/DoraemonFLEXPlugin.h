@@ -1,8 +1,8 @@
 //
-//  DoraemonFileSyncPlugin.h
+//  DoraemonFLEXPlugin.h
 //  DoraemonKit
 //
-//  Created by didi on 2020/6/10.
+//  Created by huipeng on 2023/2/24.
 //
 
 #import <Foundation/Foundation.h>
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DoraemonFileSyncPlugin : NSObject<DoraemonPluginProtocol>
+@interface DoraemonFLEXPlugin : NSObject<DoraemonPluginProtocol>
 
 @end
 

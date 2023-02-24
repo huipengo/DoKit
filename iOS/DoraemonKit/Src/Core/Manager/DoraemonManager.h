@@ -80,6 +80,7 @@ typedef NS_ENUM(NSUInteger, DoraemonManagerPluginType) {
     DoraemonManagerPluginType_DoraemonWeakNetworkPlugin,
     
     #pragma mark - 视觉工具
+    DoraemonManagerPluginType_DoraemonFLEXPlugin,
     // 颜色吸管
     DoraemonManagerPluginType_DoraemonColorPickPlugin,
     // 组件检查

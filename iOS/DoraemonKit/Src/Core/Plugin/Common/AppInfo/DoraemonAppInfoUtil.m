@@ -270,48 +270,26 @@
 
 + (NSString *)addressAuthority{
     NSString *authority = @"";
-    if (@available(iOS 9.0, *)) {//iOS9.0之后
-        CNAuthorizationStatus authStatus = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
-        switch (authStatus) {
-            case CNAuthorizationStatusAuthorized:
-                authority = @"Authorized";
-                break;
-            case CNAuthorizationStatusDenied:
-            {
-                authority = @"Denied";
-            }
-                break;
-            case CNAuthorizationStatusNotDetermined:
-            {
-                authority = @"NotDetermined";
-            }
-                break;
-            case CNAuthorizationStatusRestricted:
-                authority = @"Restricted";
-                break;
+    CNAuthorizationStatus authStatus = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
+    switch (authStatus) {
+        case CNAuthorizationStatusAuthorized:
+            authority = @"Authorized";
+            break;
+        case CNAuthorizationStatusDenied:
+        {
+            authority = @"Denied";
         }
-    }else{//iOS9.0之前
-        ABAuthorizationStatus authorStatus = ABAddressBookGetAuthorizationStatus();
-        switch (authorStatus) {
-            case kABAuthorizationStatusAuthorized:
-                authority = @"Authorized";
-                break;
-            case kABAuthorizationStatusDenied:
-            {
-                authority = @"Denied";
-            }
-                break;
-            case kABAuthorizationStatusNotDetermined:
-            {
-                authority = @"NotDetermined";
-            }
-                break;
-            case kABAuthorizationStatusRestricted:
-                authority = @"Restricted";
-                break;
-            default:
-                break;
+            break;
+        case CNAuthorizationStatusNotDetermined:
+        {
+            authority = @"NotDetermined";
         }
+            break;
+        case CNAuthorizationStatusRestricted:
+            authority = @"Restricted";
+            break;
+        default:
+            break;
     }
     return authority;
 }

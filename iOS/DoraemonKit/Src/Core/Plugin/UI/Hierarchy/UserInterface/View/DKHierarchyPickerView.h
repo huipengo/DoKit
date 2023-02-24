@@ -1,4 +1,4 @@
-#import <DoraemonKit/DKPickerView.h>
+#import <DoraemonKits/DKPickerView.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
