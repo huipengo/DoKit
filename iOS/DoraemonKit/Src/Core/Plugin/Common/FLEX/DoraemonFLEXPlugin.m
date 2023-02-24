@@ -9,6 +9,7 @@
 
 #if __has_include(<FLEX/FLEX.h>)
 #import <FLEX/FLEXManager.h>
+#import "DoraemonHomeWindow.h"
 #else
 #endif
 
@@ -17,6 +18,7 @@
 - (void)pluginDidLoad {
 #if __has_include(<FLEX/FLEX.h>)
     [[FLEXManager sharedManager] showExplorer];
+    [[DoraemonHomeWindow shareInstance] hide];
 #else
 #endif
 }

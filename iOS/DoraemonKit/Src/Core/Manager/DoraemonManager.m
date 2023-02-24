@@ -142,6 +142,10 @@ typedef void (^DoraemonPerformanceBlock)(NSDictionary *);
 
     [self initEntry:self.startingPosition];
     
+    [[DoraemonCacheManager sharedInstance] saveCrashSwitch:YES];
+    [[DoraemonCacheManager sharedInstance] saveNSLogSwitch:NO];
+    [DoraemonStatisticsUtil shareInstance].noUpLoad = YES;
+    
     //根据开关判断是否收集Crash日志
     if ([[DoraemonCacheManager sharedInstance] crashSwitch]) {
         [DoraemonCrashUncaughtExceptionHandler registerHandler];
